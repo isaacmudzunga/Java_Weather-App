@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #2a2a25;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+input {
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #fff;
+    font-family: inherit;
+    box-shadow: 0 4px 10px rgba(19, 19, 18, 0.952);
+    min-width: 300px;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.weather {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.weather h2 {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* animation */
+@keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+@keyframes raindrop-fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 1;
+    }
+}
+
+@keyframes raindrop-swing {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(-10deg);
+    }
+}
+
+.sun-animation {
+    animation: spin 5s infinite linear;
+}
+
+.cloud-animation {
+    animation: float 3s infinite ease-in-out;
+}
+
+.rain-animation {
+    animation: float 2s infinite ease-in-out;
+}
+
+.snow-animation {
+    animation: float 1.5s infinite ease-in-out;
+}
+
+.rain-animation {
+    animation: float 2s infinite ease-in-out;
+}
+
+.raindrops-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99;
+}
+
+.raindrop {
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: raindrop-fall 2s infinite linear;
+    transform-origin: bottom center;
+}
+
+.raindrop::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #25CED1;
+    animation: raindrop-swing 1s infinite alternate;
+    transform-origin: center;
+}
